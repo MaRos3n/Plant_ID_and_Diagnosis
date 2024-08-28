@@ -11,32 +11,33 @@ This project aims to develop a machine learning model capable of identifying dif
 
 The project merges several datasets into a master dataset, containing images of plants with corresponding labels that describe both the plant species and its health condition. The datasets include:
 
-- **Flower Dataset:** 
-- 102 Oxford Flowers
-- Compiled at the University of Oxford
-- 102 species of flowers found in the UK
-- 6,553 images
+- **Flower Dataset:**  
+  - 102 Oxford Flowers  
+  - Compiled at the University of Oxford  
+  - 102 species of flowers found in the UK  
+  - 6,553 images
 
-- **Leaf Dataset:** 
-- Leaf images
-- Compiled at Shri Mata Vaishno Devi University
-- 11 plant species in healthy and diseased states.
-- 4,503 images
+- **Leaf Dataset:**  
+  - Leaf images  
+  - Compiled at Shri Mata Vaishno Devi University  
+  - 11 plant species in healthy and diseased states  
+  - 4,503 images
 
-- **Corn Datasets:** 
-- Corn diseases
-- Combination of two other datasets (“PlantVillage” and “PlantDoc”)
-- 4 states of health
-- 4,189 images
+- **Corn Datasets:**  
+  - Corn diseases  
+  - Combination of two other datasets (“PlantVillage” and “PlantDoc”)  
+  - 4 states of health  
+  - 4,189 images
 
-- **Major Crops Datasets:**
-- Major Crop Diseases
-- First published in the “Computers & Electrical Engineering” journal on ScienceDirect
-- 14 plant species
-- 18 different states of health
-- 61,487 images 
+- **Major Crops Datasets:**  
+  - Major Crop Diseases  
+  - First published in the “Computers & Electrical Engineering” journal on ScienceDirect  
+  - 14 plant species  
+  - 18 different states of health  
+  - 61,487 images
 
 The `combined_labels.csv` file contains the filenames of the images and their corresponding labels, which indicate the plant species and its health status.
+
 
 ## Model Architecture
 
@@ -53,6 +54,26 @@ The project uses the **VGG16** pre-trained model for supervised learning. The VG
 ### Unsupervised Learning
 
 After the model is trained, unsupervised learning techniques such as PCA and K-Means clustering are applied to the extracted features to further analyze the data.
+
+## Albumentations
+
+### Overview
+
+Albumentations is a fast and flexible image augmentation library that significantly enhances the diversity of training data. In this project, Albumentations is used to apply various transformations to the images, making the model more robust and better at generalizing to unseen data.
+
+### Key Augmentations Applied
+
+- **RandomRotate90:** Randomly rotates images by 90 degrees.
+- **Flip:** Randomly flips images horizontally or vertically.
+- **Transpose:** Swaps the axes of the image, effectively rotating it by 90 degrees and flipping it.
+- **Noise Additions:** Adds either Gaussian noise or ISO noise to simulate different lighting conditions or sensor noise.
+- **Blurring:** Applies various blurring techniques, including motion blur, median blur, and simple blur, to simulate out-of-focus or motion-blurred images.
+- **Geometric Distortions:** Includes shift, scale, and rotate transformations, as well as optical distortion and grid distortion, to simulate real-world image variations.
+- **Color Adjustments:** Alters hue, saturation, brightness, and contrast to simulate different environmental conditions.
+
+### Usage
+
+In the training process, Albumentations is integrated into a custom data generator that applies these augmentations to the training images in real-time. This ensures that each epoch sees a slightly different version of the data, improving the model’s ability to generalize.
 
 ## Training
 
@@ -98,12 +119,13 @@ The following features are planned for future development:
 
 ## Dependencies
 
-- TensorFlow
-- Keras
-- NumPy
-- Matplotlib
-- Scikit-learn
-- Pandas
+- TensorFlow  
+- Keras  
+- NumPy  
+- Matplotlib  
+- Scikit-learn  
+- Pandas  
+- Albumentations
 
 Citations: 
 
@@ -140,7 +162,5 @@ Image Datasets:
 
    - "apple_scab" = https://apples.ces.ncsu.edu/2023/07/apple-disease-update-week-of-july-17-2023/
 
-Ryan Norman, UNC AI bootcamp
-
-Chatgpt4o
-
+- Norman, Ryan. "UNC AI Bootcamp."
+- OpenAI. ChatGPT-4. OpenAI, 2024.
